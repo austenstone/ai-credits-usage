@@ -1,0 +1,71 @@
+name: AI Credits Usage
+author: Austen Stone
+description: Report on GitHub AI Credits (AIU) usage as a job summary, JSON, and CSV.
+branding:
+  icon: "cpu"
+  color: "purple"
+
+inputs:
+  github-token:
+    description: GitHub token with access to billing usage (admin:enterprise or admin:org as required).
+    required: true
+  enterprise:
+    description: Enterprise slug. One of enterprise, organization, or cost-center is required.
+    required: false
+  organization:
+    description: Organization slug. One of enterprise, organization, or cost-center is required.
+    required: false
+    default: ${{ github.repository_owner }}
+  cost-center:
+    description: Cost center ID (enterprise-scoped). Requires `enterprise` to also be set.
+    required: false
+  year:
+    description: Year filter (YYYY). Defaults to current year.
+    required: false
+  month:
+    description: Month filter (1-12). Optional.
+    required: false
+  day:
+    description: Day filter (1-31). Optional, requires month.
+    required: false
+  hour:
+    description: Hour filter (0-23). Optional, requires day.
+    required: false
+  job-summary:
+    description: Write a markdown job summary.
+    required: false
+    default: "true"
+  json:
+    description: Upload AIU usage as a JSON artifact.
+    required: false
+    default: "true"
+  csv:
+    description: Upload AIU usage as a CSV artifact.
+    required: false
+    default: "false"
+  artifact-name:
+    description: Name of the uploaded artifact.
+    required: false
+    default: "ai-credits-usage"
+  price-per-credit:
+    description: USD price per AI Credit (used for estimated cost rollups).
+    required: false
+    default: "0.04"
+
+outputs:
+  result:
+    description: Filtered AIU usage items as a JSON string.
+  total-credits:
+    description: Total AI Credits (AIU) consumed across the matched period.
+  estimated-cost-usd:
+    description: Estimated cost in USD (total-credits * price-per-credit).
+  since:
+    description: First date in the matched data (YYYY-MM-DD).
+  until:
+    description: Last date in the matched data (YYYY-MM-DD).
+  items:
+    description: Count of matched usage line items.
+
+runs:
+  using: "node20"
+  main: "dist/index.js"

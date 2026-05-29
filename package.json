@@ -1,0 +1,38 @@
+{
+  "name": "ai-credits-usage",
+  "version": "0.1.0",
+  "description": "GitHub Action to report on GitHub AI Credits (AIU) consumption",
+  "private": false,
+  "scripts": {
+    "build": "tsc && ncc build src/index.ts -o dist --source-map --license LICENSE",
+    "lint": "eslint src/**/*.ts",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "copilot",
+    "ai-credits",
+    "aiu",
+    "billing",
+    "typescript"
+  ],
+  "author": "Austen Stone",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austenstone/ai-credits-usage.git"
+  },
+  "dependencies": {
+    "@actions/artifact": "^2.3.2",
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "json-2-csv": "^5.5.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.0"
+  }
+}

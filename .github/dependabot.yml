@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      # @actions/artifact 3.x+ is ESM-only; ncc (CJS) can't bundle it.
+      # Pinned to 2.x until ncc supports ESM or we swap bundlers (see austenstone-notes#220).
+      - dependency-name: "@actions/artifact"
+        update-types:
+          - version-update:semver-major
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

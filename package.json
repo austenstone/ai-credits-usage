@@ -36,6 +36,7 @@
     "vitest": "^3.2.0"
   },
   "overrides": {
-    "@actions/artifact": "^2.3.2"
+    "@actions/artifact": "^2.3.2",
+    "undici": "^6.27.0"
   }
 }

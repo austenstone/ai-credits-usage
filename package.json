@@ -37,6 +37,9 @@
   },
   "overrides": {
     "@actions/artifact": "^2.3.2",
-    "undici": "^6.27.0"
+    "undici": "^6.27.0",
+    "@octokit/request": "^9.2.1",
+    "@octokit/plugin-paginate-rest": "^11.4.1",
+    "@octokit/request-error": "^6.1.7"
   }
 }
